@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rideau Canal Skateway Monitoring Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"
+      defer
+    ></script>
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="background-glow"></div>
+    <div class="page-shell">
+      <header class="hero-panel">
+        <div class="hero-content">
+          <p class="eyebrow">CST8916 Final Project</p>
+          <h1>Rideau Canal Skateway Monitoring Dashboard</h1>
+          <p class="hero-copy">
+            Current safety conditions and recent trends for Dow's Lake, Fifth
+            Avenue, and NAC.
+          </p>
+        </div>
+        <div class="hero-meta">
+          <div id="refresh-status" class="info-chip">
+            <span class="info-chip-copy">
+              Live data refreshes every 30 seconds. Showing 3 monitored locations.
+            </span>
+            <span
+              id="refresh-indicator"
+              class="refresh-indicator is-syncing"
+              aria-hidden="true"
+            ></span>
+          </div>
+          <div id="last-updated" class="timestamp">
+            Last updated: 0000-00-00 00:00:00
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <section class="panel summary-panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-label">System Summary</p>
+              <h2>Overall Canal Status</h2>
+            </div>
+            <span id="overall-status-badge" class="status-badge status-unknown">
+              Loading
+            </span>
+          </div>
+          <p id="overall-status-text" class="summary-text">
+            Checking the latest monitoring data...
+          </p>
+          <div id="status-counts" class="summary-stats"></div>
+        </section>
+
+        <section id="error-state" class="message message-error hidden"></section>
+        <section id="empty-state" class="message hidden"></section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-label">Latest Aggregations</p>
+              <h2>Current Conditions by Location</h2>
+            </div>
+          </div>
+          <div id="cards-grid" class="cards-grid"></div>
+        </section>
+
+        <section class="panel chart-panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-label">Last Hour</p>
+              <h2>Average Ice Thickness Trend</h2>
+            </div>
+          </div>
+          <p id="chart-empty" class="message hidden"></p>
+          <div class="chart-wrapper">
+            <canvas id="ice-thickness-chart"></canvas>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
